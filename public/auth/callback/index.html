@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>인증 완료 - 웰계장터</title>
+  </head>
+  <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #fafaf4;">
+    <div style="text-align: center; padding: 24px; background: white; border-radius: 16px; border: 1px solid #e3e3de; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <h3 style="margin-top: 0; color: #1a1c19;">로그인/인증 완료</h3>
+      <p style="color: #40493d; font-size: 14px;">인증이 성공적으로 완료되었습니다. 잠시 후 창이 닫힙니다.</p>
+    </div>
+    <script>
+      (function() {
+        try {
+          const urlParams = new URLSearchParams(window.location.search);
+          const code = urlParams.get('code');
+          const error = urlParams.get('error');
+          if (window.opener) {
+            if (error) {
+              window.opener.postMessage({ type: 'OAUTH_AUTH_FAILURE', error }, '*');
+            } else {
+              window.opener.postMessage({ type: 'OAUTH_AUTH_SUCCESS', code }, '*');
+            }
+            setTimeout(() => {
+              window.close();
+            }, 300);
+          } else {
+            window.location.href = '/';
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "웰계장터 (Welgye Market)",
+  "description": "서울 노원구 월계1동 1인 가구 및 광운대·인덕대 자취생을 위한 스마트 로컬 식재료 최저가 비교 & 일일 식재료 알림 서비스",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
